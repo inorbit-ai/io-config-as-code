@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://inorbit.ai/incidentDefinition.schema.json",
+  "title": "IncidentDefinitionSpec",
+  "description": "Incident definition specification",
+  "type": "object",
+  "properties": {
+      "statusId": {
+          "$id": "#/properties/statusId",
+          "type": "string",
+          "description": "Status used as the trigger of these incidents."
+      },
+      "label": {
+          "$id": "#/properties/label",
+          "type": "string",
+          "description": "A descriptive label for the incident."
+      },
+      "warning": {
+          "$id": "#/properties/warning",
+          "type": "object",
+          "description": "Defines rules to handle the case when the associated status is in warning state.",
+          "properties": {
+              "notificationChannels": {
+                  "$id": "#/properties/warning/properties/notificationChannels",
+                  "type": "array",
+                  "description": "Channels to use to notify about incidents.",
+                  "examples": [
+                      [
+                          "app", "slack#some_channel", "opsgenie", "googleChat", "webhook"
+                      ]
+                  ],
+                  "items": {
+                      "$id": "#/properties/warning/properties/notificationChannels/items",
+                      "anyOf": [
+                          {
+                              "$id": "#/properties/warning/properties/notificationChannels/items/anyOf/0",
+                              "type": "string",
+                              "description": "A notification channel"
+                          }
+                      ]
+                  }
+              },
+              "autoActions": {
+                  "$id": "#/properties/warning/properties/autoActions",
+                  "type": "array",
+                  "description": "Actions to execute automatically when the incident starts.",
+                  "items": {
+                      "$id": "#/properties/warning/properties/autoActions/items",
+                      "anyOf": [
+                        {
+                            "$id": "#/properties/warning/properties/manualActions/items/anyOf/0",
+                            "type": "string",
+                            "description": "An action id."
+                        }
+                    ]
+                  }
+              },
+              "manualActions": {
+                  "$id": "#/properties/warning/properties/manualActions",
+                  "type": "array",
+                  "description": "Actions proposed to the users when the incident happens.",
+                  "items": {
+                      "$id": "#/properties/warning/properties/manualActions/items",
+                      "anyOf": [
+                          {
+                              "$id": "#/properties/warning/properties/manualActions/items/anyOf/0",
+                              "type": "string",
+                              "description": "An action id."
+                          }
+                      ]
+                  }
+              },
+              "severity": {
+                  "$id": "#/properties/warning/properties/severity",
+                  "type": "string",
+                  "description": "Incident severity level",
+                  "enum": ["SEV 0", "SEV 1", "SEV 2", "SEV 3"]
+              }
+          }
+      },
+      "error": {
+        "$id": "#/properties/error",
+        "type": "object",
+        "description": "Defines rules to handle the case when the associated status is in error state.",
+        "properties": {
+            "notificationChannels": {
+                "$id": "#/properties/error/properties/notificationChannels",
+                "type": "array",
+                "description": "Channels to use to notify about incidents.",
+                "examples": [
+                    [
+                        "app", "slack#some_channel", "opsgenie", "googleChat", "webhook"
+                    ]
+                ],
+                "items": {
+                    "$id": "#/properties/error/properties/notificationChannels/items",
+                    "anyOf": [
+                        {
+                            "$id": "#/properties/error/properties/notificationChannels/items/anyOf/0",
+                            "type": "string",
+                            "description": "A notification channel"
+                        }
+                    ]
+                }
+            },
+            "autoActions": {
+                "$id": "#/properties/error/properties/autoActions",
+                "type": "array",
+                "description": "Actions to execute automatically when the incident starts.",
+                "items": {
+                    "$id": "#/properties/error/properties/autoActions/items",
+                    "anyOf": [
+                      {
+                          "$id": "#/properties/error/properties/manualActions/items/anyOf/0",
+                          "type": "string",
+                          "description": "An action id."
+                      }
+                  ]
+                }
+            },
+            "manualActions": {
+                "$id": "#/properties/error/properties/manualActions",
+                "type": "array",
+                "description": "Actions proposed to the users when the incident happens.",
+                "items": {
+                    "$id": "#/properties/error/properties/manualActions/items",
+                    "anyOf": [
+                        {
+                            "$id": "#/properties/error/properties/manualActions/items/anyOf/0",
+                            "type": "string",
+                            "description": "An action id."
+                        }
+                    ]
+                }
+            },
+            "severity": {
+                "$id": "#/properties/error/properties/severity",
+                "type": "string",
+                "description": "Incident severity level",
+                "enum": ["SEV 0", "SEV 1", "SEV 2", "SEV 3"]
+            }
+        }
+      }
+  }
+}
