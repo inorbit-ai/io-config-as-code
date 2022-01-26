@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://inorbit.ai/RobotCamera.schema.json",
+  "title": "RobotCameraSpec",
+  "description": "Robot Camera specification",
+  "type": "object",
+  "examples": [
+    {
+      "label": "front",
+      "shortLabel": "F",
+      "rosTopic": "usb_cam/image_raw",
+      "width": 320,
+      "height": 240,
+      "rate": 1,
+      "encoding": "rgb8",
+      "quality": 20,
+      "rotation": 0,
+      "mirror": false,
+      "enabled": true
+    }
+  ],
+  "properties": {
+    "label": {
+      "$id": "#/properties/label",
+      "type": "string",
+      "title": "The label schema",
+      "description": "Label displayed on screen.",
+      "default": "",
+      "examples": ["front"]
+    },
+    "shortLabel": {
+      "$id": "#/properties/shortLabel",
+      "type": "string",
+      "title": "The shortLabel schema",
+      "description": "Optional short label to replace the default one (normally the first letter of `label`)",
+      "default": "",
+      "examples": ["F"]
+    },
+    "rosTopic": {
+      "$id": "#/properties/rosTopic",
+      "type": "string",
+      "title": "The rosTopic schema",
+      "description": "The ROS topic",
+      "default": "",
+      "examples": ["usb_cam/image_raw"]
+    },
+    "width": {
+      "$id": "#/properties/width",
+      "type": "integer",
+      "title": "The width schema",
+      "description": "Integer of width in pixels.",
+      "default": 0,
+      "examples": [320]
+    },
+    "height": {
+      "$id": "#/properties/height",
+      "type": "integer",
+      "title": "The height schema",
+      "description": "Integer of height in pixels.",
+      "default": 0,
+      "examples": [240]
+    },
+    "rate": {
+      "$id": "#/properties/rate",
+      "type": "integer",
+      "title": "The rate schema",
+      "description": "The number of frames per second.",
+      "default": 0,
+      "examples": [1]
+    },
+    "encoding": {
+      "$id": "#/properties/encoding",
+      "type": "string",
+      "title": "The encoding schema",
+      "description": "The encoding type.",
+      "default": "rgb8",
+      "examples": ["rgb8"]
+    },
+    "quality": {
+      "$id": "#/properties/quality",
+      "type": "integer",
+      "title": "The quality schema",
+      "description": "Integer of quality between 0 and 100.",
+      "default": 0,
+      "examples": [20]
+    },
+    "rotation": {
+      "$id": "#/properties/rotation",
+      "type": "integer",
+      "title": "The rotation schema",
+      "description": "Rotation of the camera feed in multiples of 90.",
+      "default": 0,
+      "examples": [0, 90, 180, 270]
+    },
+    "mirror": {
+      "$id": "#/properties/mirror",
+      "type": "boolean",
+      "title": "The mirror schema",
+      "description": "Optional boolean for mirroring image.",
+      "default": false,
+      "examples": [false, true]
+    },
+    "enabled": {
+      "$id": "#/properties/enabled",
+      "type": "boolean",
+      "title": "The enabled schema",
+      "description": "Boolean for enabling camera.",
+      "default": true,
+      "examples": [true, false]
+    }
+  },
+  "additionalProperties": true
+}
